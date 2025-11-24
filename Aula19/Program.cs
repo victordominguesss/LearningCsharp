@@ -153,6 +153,7 @@ public class Program
                     }
                 break;
 
+
                 case 5:
                     if (shoppingList.Count > 0)
                     {
@@ -165,18 +166,20 @@ public class Program
                     }
                 break;
 
+
                 case 6:
-                            if (shoppingList.Count > 0)
-                            {
-                                File.WriteAllLines(filePath, shoppingList, System.Text.Encoding.UTF8);
-                                Console.WriteLine("Lista salva com sucesso!");
-                            }
-
-                            onLoop = false;
-
-                            Console.WriteLine("Programa finalizado!");
-                            break;
-                        }
+                    if (shoppingList.Count > 0)
+                    {
+                        File.WriteAllLines(filePath, shoppingList, System.Text.Encoding.UTF8);
+                        Console.WriteLine("Salvando a lista e finalizando o programa!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Finalizando o programa!");
+                    }
+                    onLoop = false;
+                break;
+            }
         }
     }
 }
