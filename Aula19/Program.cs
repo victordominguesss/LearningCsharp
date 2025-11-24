@@ -25,12 +25,13 @@ public class Program
         while (onLoop)
         {
             Console.WriteLine("\n============= Lista de compras =============");
-            Console.WriteLine("\nDigite uma das opcões para continuar:");
+            Console.WriteLine("\nDigite uma das opcões para continuar, exemplo: 1");
             Console.WriteLine("(1). Adicionar um item");
             Console.WriteLine("(2). Ler lista");
             Console.WriteLine("(3). Editar um item");
             Console.WriteLine("(4). Remover um item");
-            Console.WriteLine("(5). Sair");
+            Console.WriteLine("(5). Limpar lista");
+            Console.WriteLine("(6). Salvar lista em doc e finalizar o programa");
 
             int optionChosen;
             try
@@ -152,14 +153,30 @@ public class Program
                     }
                 break;
 
-
                 case 5:
-                    File.WriteAllLines(filePath, shoppingList, System.Text.Encoding.UTF8);
-                    onLoop = false;
-
-                    Console.WriteLine("Programa finalizado!");
+                    if (shoppingList.Count > 0)
+                    {
+                        shoppingList.Clear();
+                        Console.WriteLine("Lista limpa!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("A lista já está vazia!");
+                    }
                 break;
-            }
+
+                case 6:
+                            if (shoppingList.Count > 0)
+                            {
+                                File.WriteAllLines(filePath, shoppingList, System.Text.Encoding.UTF8);
+                                Console.WriteLine("Lista salva com sucesso!");
+                            }
+
+                            onLoop = false;
+
+                            Console.WriteLine("Programa finalizado!");
+                            break;
+                        }
         }
     }
 }
